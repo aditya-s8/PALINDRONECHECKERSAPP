@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class PalindromeQueueStack {
+public class PalindromeDeque {
 
     public static void main(String[] args) {
 
@@ -9,20 +9,18 @@ public class PalindromeQueueStack {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> deque = new ArrayDeque<>();
 
-        // Insert characters into queue and stack
+        // Insert characters into deque
         for (int i = 0; i < input.length(); i++) {
-            queue.add(input.charAt(i));   // enqueue
-            stack.push(input.charAt(i));  // push
+            deque.addLast(input.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        // Compare dequeue and pop
-        while (!queue.isEmpty()) {
-            if (queue.remove() != stack.pop()) {
+        // Compare front and rear
+        while (deque.size() > 1) {
+            if (deque.removeFirst() != deque.removeLast()) {
                 isPalindrome = false;
                 break;
             }
