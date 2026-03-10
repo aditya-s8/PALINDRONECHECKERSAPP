@@ -1,17 +1,28 @@
+import java.util.Scanner;
+
 public class PalindroneCheckersApp {
+
     public static void main(String[] args) {
 
-        String str = "madam";
-        String rev = "";
+        Scanner sc = new Scanner(System.in);
 
-        for(int i = str.length() - 1; i >= 0; i--) {
-            rev += str.charAt(i);
+        System.out.print("Enter a string: ");
+        String original = sc.nextLine();
+
+        String reversed = "";
+
+        // Reverse the string using for loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
         }
 
-        if(str.equals(rev)) {
-            System.out.println("Palindrome");
+        // Compare original and reversed string
+        if (original.equals(reversed)) {
+            System.out.println("The string is a palindrome.");
         } else {
-            System.out.println("Not Palindrome");
+            System.out.println("The string is not a palindrome.");
         }
+
+        sc.close();
     }
 }
