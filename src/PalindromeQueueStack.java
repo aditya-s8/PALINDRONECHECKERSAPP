@@ -1,7 +1,6 @@
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 
-public class PalindromeCharArray {
+public class PalindromeQueueStack {
 
     public static void main(String[] args) {
 
@@ -10,18 +9,20 @@ public class PalindromeCharArray {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
+        Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
-        // Push characters into stack
+        // Insert characters into queue and stack
         for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+            queue.add(input.charAt(i));   // enqueue
+            stack.push(input.charAt(i));  // push
         }
 
         boolean isPalindrome = true;
 
-        // Pop and compare
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) != stack.pop()) {
+        // Compare dequeue and pop
+        while (!queue.isEmpty()) {
+            if (queue.remove() != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
