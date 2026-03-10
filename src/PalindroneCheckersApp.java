@@ -1,16 +1,14 @@
-import java.util.Scanner;
 public class PalindroneCheckersApp {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a word: ");
-        String str = sc.nextLine();
+
+        String str = "madam";
         String rev = "";
 
-        for(int i = str.length()-1; i >= 0; i--){
+        for(int i = str.length() - 1; i >= 0; i--) {
             rev += str.charAt(i);
         }
 
-        if(str.equals(rev)){
+        if(str.equals(rev)) {
             System.out.println("Palindrome");
         } else {
             System.out.println("Not Palindrome");
