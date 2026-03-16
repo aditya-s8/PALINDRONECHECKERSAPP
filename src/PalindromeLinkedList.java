@@ -1,17 +1,22 @@
 import java.util.Scanner;
 
-public class PalindromeIgnoreCaseSpace {
+class PalindromeChecker {
 
-    public static boolean isPalindrome(String str) {
+    private String text;
 
-        // Normalize string: remove spaces and convert to lowercase
-        str = str.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+    // Constructor
+    public PalindromeChecker(String text) {
+        this.text = text;
+    }
+
+    // Method to check palindrome
+    public boolean checkPalindrome() {
 
         int start = 0;
-        int end = str.length() - 1;
+        int end = text.length() - 1;
 
         while (start < end) {
-            if (str.charAt(start) != str.charAt(end)) {
+            if (text.charAt(start) != text.charAt(end)) {
                 return false;
             }
             start++;
@@ -20,6 +25,9 @@ public class PalindromeIgnoreCaseSpace {
 
         return true;
     }
+}
+
+public class Main {
 
     public static void main(String[] args) {
 
@@ -28,8 +36,10 @@ public class PalindromeIgnoreCaseSpace {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        if (isPalindrome(input)) {
-            System.out.println("The string is a palindrome (ignoring spaces and case).");
+        PalindromeChecker checker = new PalindromeChecker(input);
+
+        if (checker.checkPalindrome()) {
+            System.out.println("The string is a palindrome.");
         } else {
             System.out.println("The string is not a palindrome.");
         }
